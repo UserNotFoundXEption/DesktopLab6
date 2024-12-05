@@ -1,0 +1,168 @@
+﻿@page "/"
+@inject HttpClient Http
+@using Shared
+
+<h3>Product Management</h3>
+
+<p>
+    <input @bind="filterByName" placeholder="Filter by name" />
+    <button @onclick="LoadProducts">Search</button>
+    <button @onclick="ShowAddForm">Add Product</button>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                <button @onclick="SortByName">Name</button>
+            </th>
+            <th>
+                <button @onclick="SortByPrice">Price</button>
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>
+                    <button @onclick="() => EditProduct(product)">Edit</button>
+                    <button @onclick="() => DeleteProduct(product.Name)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (showForm)
+{
+    <div>
+        <h4>@(editingProduct != null ? "Edit Product" : "Add Product")</h4>
+        <input @bind="formProduct.Name" placeholder="Name" disabled="@formProductDisabled" />
+        <input @bind="formProduct.Price" placeholder="Price" type="number" />
+        <button @onclick="SaveProduct">Save</button>
+        <button @onclick="CancelForm">Cancel</button>
+    </div>
+}
+
+@code {
+    private List<Product> products = new();
+    private Product formProduct = new();
+    private Product? editingProduct = null;
+    private bool showForm = false;
+    private bool formProductDisabled = false;
+    private string? filterByName = null;
+    private string? sortBy = null;
+    private string? sortOrder = "asc";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadProducts();
+    }
+
+    private async Task LoadProducts()
+    {
+        var url = "products";
+        var parameters = new List<string>();
+
+        if (!string.IsNullOrWhiteSpace(filterByName))
+        {
+            parameters.Add($"filterByName={filterByName}");
+        }
+
+        if (!string.IsNullOrWhiteSpace(sortBy))
+        {
+            parameters.Add($"sortBy={sortBy}&sortOrder={sortOrder}");
+        }
+
+        if (parameters.Any())
+        {
+            url += "?" + string.Join("&", parameters);
+        }
+
+        products = await Http.GetFromJsonAsync<List<Product>>(url) ?? new List<Product>();
+    }
+
+    private void SortByName()
+    {
+        if (sortBy == "name")
+        {
+            sortOrder = sortOrder == "asc" ? "desc" : "asc";
+        }
+        else
+        {
+            sortBy = "name";
+            sortOrder = "asc";
+        }
+
+        LoadProducts();
+    }
+
+    private void SortByPrice()
+    {
+        if (sortBy == "price")
+        {
+            sortOrder = sortOrder == "asc" ? "desc" : "asc";
+        }
+        else
+        {
+            sortBy = "price";
+            sortOrder = "asc";
+        }
+
+        LoadProducts();
+    }
+
+    private void ShowAddForm()
+    {
+        formProduct = new Product();
+        editingProduct = null;
+        formProductDisabled = false;
+        showForm = true;
+    }
+
+    private void EditProduct(Product product)
+    {
+        formProduct = new Product
+            {
+                Name = product.Name,
+                Price = product.Price
+            };
+        editingProduct = product;
+        formProductDisabled = true;
+        showForm = true;
+    }
+
+    private async Task SaveProduct()
+    {
+        if (editingProduct == null)
+        {
+            // Add new product
+            await Http.PostAsJsonAsync("products", formProduct);
+        }
+        else
+        {
+            // Update existing product
+            await Http.PutAsJsonAsync($"products/{editingProduct.Name}", formProduct);
+        }
+
+        await LoadProducts();
+        CancelForm();
+    }
+
+    private async Task DeleteProduct(string name)
+    {
+        await Http.DeleteAsync($"products/{name}");
+        await LoadProducts();
+    }
+
+    private void CancelForm()
+    {
+        showForm = false;
+        formProduct = new Product();
+        editingProduct = null;
+    }
+}
