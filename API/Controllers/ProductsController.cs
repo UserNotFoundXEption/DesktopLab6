@@ -24,7 +24,7 @@ public class ProductsController : ControllerBase
     [FromQuery] string? sortOrder = "asc",
     [FromQuery] string? filterByName = null)
     {
-        var query = _context.products.AsQueryable();
+        var query = _context.Product.AsQueryable();
 
         if (!string.IsNullOrEmpty(filterByName))
         {
@@ -57,7 +57,7 @@ public class ProductsController : ControllerBase
     [HttpGet("{name}")]
     public ActionResult<Product> GetProduct(string name)
     {
-        var product = _context.products.Find(name);
+        var product = _context.Product.Find(name);
         if (product == null)
         {
             return NotFound();
@@ -68,7 +68,7 @@ public class ProductsController : ControllerBase
     [HttpPost]
     public ActionResult<Product> PostProduct(Product product)
     {
-        _context.products.Add(product);
+        _context.Product.Add(product);
         _context.SaveChanges();
 
         return CreatedAtAction(nameof(GetProduct), new { name = product.Name }, product);
@@ -91,13 +91,13 @@ public class ProductsController : ControllerBase
     [HttpDelete("{name}")]
     public IActionResult DeleteFilm(string name)
     {
-        var product = _context.products.Find(name);
+        var product = _context.Product.Find(name);
         if (product == null)
         {
             return NotFound();
         }
 
-        _context.products.Remove(product);
+        _context.Product.Remove(product);
         _context.SaveChanges();
 
         return NoContent();

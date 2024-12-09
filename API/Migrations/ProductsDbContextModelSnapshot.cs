@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ProductsDbContext))]
-    partial class FilmDbContextModelSnapshot : ModelSnapshot
+    partial class ProductsDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -21,29 +21,20 @@ namespace API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Shared.Film", b =>
+            modelBuilder.Entity("Shared.Product", b =>
                 {
-                    b.Property<string>("Title")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Rating")
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("UnitsAvailable")
                         .HasColumnType("int");
 
-                    b.HasKey("Title");
+                    b.HasKey("Name");
 
-                    b.ToTable("films");
-
-                    b.HasData(
-                        new
-                        {
-                            Title = "Example Film 1",
-                            Rating = 5
-                        },
-                        new
-                        {
-                            Title = "Example Film 2",
-                            Rating = 8
-                        });
+                    b.ToTable("Product");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,7 +7,7 @@ namespace API.Models;
 
 public class ProductsDbContext : DbContext
 {
-    public DbSet<Product> products { get; set; }
+    public DbSet<Product> Product { get; set; }
 
     private readonly IConfiguration _configuration;
 
@@ -18,13 +18,10 @@ public class ProductsDbContext : DbContext
         _configuration = configuration;
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Product>()
                 .HasKey(p => p.Name);
 

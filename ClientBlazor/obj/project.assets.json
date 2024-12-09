@@ -1905,11 +1905,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\ClientBlazor.csproj",
+      "projectUniqueName": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\ClientBlazor.csproj",
       "projectName": "ClientBlazor",
-      "projectPath": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\ClientBlazor.csproj",
+      "projectPath": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\ClientBlazor.csproj",
       "packagesPath": "C:\\Users\\lordk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\obj\\",
+      "outputPath": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1931,8 +1931,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\Shared\\Shared.csproj": {
-              "projectPath": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\Shared\\Shared.csproj"
+            "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\Shared\\Shared.csproj"
             }
           }
         }

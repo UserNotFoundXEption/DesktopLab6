@@ -1,43 +1,43 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\obj\\Debug\\net8.0\\compressed\\s38gnv914m.gz",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\obj\\Debug\\net8.0\\compressed\\s38gnv914m.gz",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ClientBlazor.styles.css",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ClientBlazor.styles.css",
       "PackagePath": "staticwebassets\\ClientBlazor.styles.css"
     },
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\wwwroot\\css\\app.css",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\wwwroot\\icon-192.png",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\wwwroot\\index.html",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab3\\ClientBlazor\\wwwroot\\sample-data\\weather.json",
+      "Id": "C:\\Users\\lordk\\source\\repos\\DesktopLab6\\ClientBlazor\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },
     {
