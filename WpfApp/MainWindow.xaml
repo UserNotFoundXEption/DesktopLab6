@@ -1,0 +1,86 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:utils="clr-namespace:WpfApp.Utils"
+        xmlns:vm="clr-namespace:WpfApp.ViewModels" d:DataContext="{d:DesignInstance Type=vm:ProductViewModel}"
+        mc:Ignorable="d"
+        Title="Product Management" Height="450" Width="800">
+    <Window.Resources>
+        <utils:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+        <utils:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBox Width="200" Margin="5" Text="{Binding FilterByName, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Content="Search" Style="{StaticResource PrimaryButton}" Width="100" Margin="5" Command="{Binding LoadProductsCommand}" />
+                <Button Content="Add Product" Style="{StaticResource PrimaryButton}" Width="100" Margin="5" Command="{Binding AddProductCommand}" />
+            </StackPanel>
+
+            <DataGrid ItemsSource="{Binding Products}" AutoGenerateColumns="False" Margin="5" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
+                    <DataGridTextColumn Header="Units Available" Binding="{Binding UnitsAvailable}" />
+                    <DataGridTemplateColumn Header="Actions">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Edit"
+                                        Style="{StaticResource LinkButton}"
+                                        Command="{Binding DataContext.EditProductCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                        CommandParameter="{Binding}" 
+                                        Margin="2" />       
+                                    <Button Content="Delete"
+                                        Style="{StaticResource LinkButton}"
+                                        Command="{Binding DataContext.DeleteProductCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                        CommandParameter="{Binding}" 
+                                        Margin="2" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Margin="5" Visibility="{Binding ShowForm, Converter={StaticResource BoolToVisibilityConverter}}">
+                <TextBlock Text="Product Form" FontWeight="Bold" Margin="5" />
+                <Grid Margin="5">
+                    <TextBox x:Name="InputName" Text="{Binding FormProduct.Name, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Name" 
+                    IsHitTestVisible="False" 
+                    Foreground="Gray" 
+                    VerticalAlignment="Center" 
+                    Margin="5,0,0,0" 
+                    Visibility="{Binding Text, ElementName=InputName, Converter={StaticResource StringToVisibilityConverter}}" />
+                </Grid>
+                <Grid Margin="5">
+                    <TextBox x:Name="InputPrice" Text="{Binding FormProduct.Price, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Price" 
+                    IsHitTestVisible="False" 
+                    Foreground="Gray" 
+                    VerticalAlignment="Center" 
+                    Margin="5,0,0,0" 
+                    Visibility="{Binding Text, ElementName=InputPrice, Converter={StaticResource StringToVisibilityConverter}}" />
+                </Grid>
+                <Grid Margin="5">
+                    <TextBox x:Name="InputUnitsAvailable" Text="{Binding FormProduct.UnitsAvailable, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Units available" 
+                    IsHitTestVisible="False" 
+                    Foreground="Gray" 
+                    VerticalAlignment="Center" 
+                    Margin="5,0,0,0" 
+                    Visibility="{Binding Text, ElementName=InputUnitsAvailable, Converter={StaticResource StringToVisibilityConverter}}" />
+                </Grid>
+                <Button Content="Save"
+                    Style="{StaticResource PrimaryButton}"
+                    Command="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding FormProduct}" 
+                    Margin="5" />
+                <Button Content="Cancel" Style="{StaticResource PrimaryButton}" Command="{Binding CancelCommand}" Margin="5" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
