@@ -1,10 +1,9 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using Shared;
-using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using WpfApp.Services;
 
@@ -42,7 +41,7 @@ public class ProductViewModel : INotifyPropertyChanged
         SaveCommand = new RelayCommand<Product>(async product => await SaveAsync(product));
         DeleteProductCommand = new RelayCommand<Product>(async product => await DeleteProductAsync(product));
         CancelCommand = new RelayCommand(() => CancelForm());
-        Task.Run(() => LoadProductsAsync());
+        Application.Current.Dispatcher.Invoke(() =>LoadProductsAsync());
     }
 
     private async Task LoadProductsAsync()
